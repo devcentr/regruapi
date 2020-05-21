@@ -1,4 +1,4 @@
-package go_regruclient
+package regruapi
 
 import (
 	"encoding/json"

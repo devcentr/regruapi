@@ -1,4 +1,4 @@
-module github.com/devcentr/go-regruclient
+module github.com/devcentr/regruapi
 
 go 1.14
 
