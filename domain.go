@@ -1,24 +1,18 @@
 package regruapi
 
 import (
-	"encoding/json"
 	"github.com/pkg/errors"
 )
 
 func (c *Client) DomainGetPrice() (*DomainGetPriceResponse, error) {
-	body, err := c.request("domain/get_prices", map[string]string{
+	resp, err := c.request("domain/get_prices", map[string]string{
 		"show_renew_data": "1",
-	})
+	}, &DomainGetPriceResponse{})
 	if err != nil {
-		return nil, errors.Wrap(err, "send request")
+		return nil, errors.Wrap(err, "call request")
 	}
 
-	response := DomainGetPriceResponse{}
-	if err := json.Unmarshal(body, &response); err != nil {
-		return nil, errors.Wrap(err, "response unmarshal")
-	}
-
-	return &response, nil
+	return resp.(*DomainGetPriceResponse), nil
 }
 
 type DomainGetPriceResponse struct {
